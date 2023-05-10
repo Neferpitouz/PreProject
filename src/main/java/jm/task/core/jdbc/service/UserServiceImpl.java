@@ -9,50 +9,26 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
     UserDaoJDBCImpl newEx = new UserDaoJDBCImpl();
     public void createUsersTable() {
-        try {
-            newEx.createUsersTable();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        newEx.createUsersTable();
     }
 
     public void dropUsersTable() {
-        try {
-            newEx.dropUsersTable();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        newEx.dropUsersTable();
     }
 
     public void saveUser(String name, String lastName, byte age) {
-        try {
-            newEx.saveUser(name, lastName, age);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        newEx.saveUser(name, lastName, age);
     }
 
     public void removeUserById(long id) {
-        try {
-            newEx.removeUserById(id);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        newEx.removeUserById(id);
     }
 
     public List<User> getAllUsers() {
-        try {
-            return newEx.getAllUsers();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        return newEx.getAllUsers();
     }
 
     public void cleanUsersTable() {
-        try {
-            newEx.cleanUsersTable();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        newEx.cleanUsersTable();
     }
 }
