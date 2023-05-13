@@ -18,5 +18,6 @@ public class Main {
         test.saveUser("Bill", "Gates", (byte) 142);
         test.getAllUsers().forEach(System.out::println);
         test.cleanUsersTable();
+
     }
 }
