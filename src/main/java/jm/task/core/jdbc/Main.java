@@ -1,6 +1,7 @@
 package jm.task.core.jdbc;
 
 import jm.task.core.jdbc.dao.UserDaoJDBCImpl;
+import jm.task.core.jdbc.service.UserServiceImpl;
 import jm.task.core.jdbc.util.Util;
 
 import java.sql.Connection;
@@ -9,17 +10,13 @@ import java.sql.SQLException;
 
 public class Main {
     public static void main(String[] args) {
-        UserDaoJDBCImpl test = new UserDaoJDBCImpl();
-        try {
-            test.createUsersTable();
-//            test.saveUser("Alex", "Murphy", (byte) 34);
-//            test.removeUserById(3);
-//            test.getAllUsers().forEach(System.out::println);
-            //test.dropUsersTable();
-//            test.cleanUsersTable();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
+        UserServiceImpl test = new UserServiceImpl();
+        test.createUsersTable();
+        test.saveUser("Alex", "Murphy", (byte) 34);
+        test.saveUser("Pyotr", "Quill", (byte) 50);
+        test.saveUser("Drax", "Destroyer", (byte) 9);
+        test.saveUser("Bill", "Gates", (byte) 142);
+        test.getAllUsers().forEach(System.out::println);
+        test.cleanUsersTable();
     }
 }
