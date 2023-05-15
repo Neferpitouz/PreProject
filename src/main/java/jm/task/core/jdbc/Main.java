@@ -16,7 +16,5 @@ public class Main {
         test.getAllUsers().forEach(System.out::println);
         test.cleanUsersTable();
         Util.sessionClose();
-
-
     }
 }
