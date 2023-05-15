@@ -6,6 +6,7 @@ import org.hibernate.Session;
 
 import javax.transaction.SystemException;
 import javax.transaction.Transaction;
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserDaoHibernateImpl implements UserDao {
@@ -36,7 +37,13 @@ public class UserDaoHibernateImpl implements UserDao {
 
     @Override
     public void dropUsersTable() {
-
+        try {
+            transaction = session.beginTransaction();
+            session.createSQLQuery("DROP TABLE IF EXISTS users;").executeUpdate();
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -56,16 +63,37 @@ public class UserDaoHibernateImpl implements UserDao {
 
     @Override
     public void removeUserById(long id) {
-
+        try {
+            transaction = session.beginTransaction();
+            User tester = session.get(User.class, id);
+            if (tester != null) {
+                session.delete(tester);
+            }
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public List<User> getAllUsers() {
-        return null;
+        List<User> users = new ArrayList<>();
+        try {
+            users = session.createQuery("FROM User", User.class).getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return users;
     }
 
     @Override
     public void cleanUsersTable() {
-
+        try {
+            transaction = session.beginTransaction();
+            session.createSQLQuery("TRUNCATE TABLE users;").executeUpdate();
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
