@@ -1,6 +1,5 @@
 package jm.task.core.jdbc;
 
-import jm.task.core.jdbc.dao.UserDaoHibernateImpl;
 import jm.task.core.jdbc.service.UserServiceImpl;
 import jm.task.core.jdbc.util.Util;
 
@@ -15,6 +14,6 @@ public class Main {
         test.saveUser("Bill", "Gates", (byte) 55);
         test.getAllUsers().forEach(System.out::println);
         test.cleanUsersTable();
-        Util.sessionClose();
+        Util.closeSessionFactory();
     }
 }

@@ -64,7 +64,9 @@ public class Util {
         }
         return sessionFactory;
     }
-    public static void sessionClose() {
-        sessionFactory.close();
+    public static void closeSessionFactory() {
+        if (sessionFactory != null && !sessionFactory.isClosed()) {
+            sessionFactory.close();
+        }
     }
 }
